@@ -16,13 +16,11 @@ public class TestHibernate {
 		emp.setEmail("demo-user@mail.com");
 		emp.setFirstName("demo");
 		emp.setLastName("user");
-
+		
 		session.persist(emp);
-		
-
+		EmployeeEntity empNew = session.get(EmployeeEntity.class, emp.getEmployeeId());
 		session.getTransaction().commit();
-		
-		System.out.println(session.contains(emp));
+		System.out.println(emp.getEmployeeId() +" " + empNew.getEmployeeId());
 		HibernateUtil.shutdown();
 	}
 
