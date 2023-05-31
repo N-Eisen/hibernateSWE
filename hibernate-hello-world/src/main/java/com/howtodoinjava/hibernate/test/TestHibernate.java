@@ -18,8 +18,11 @@ public class TestHibernate {
 		emp.setLastName("user");
 		
 		session.persist(emp);
+		
 		EmployeeEntity empNew = session.get(EmployeeEntity.class, emp.getEmployeeId());
+		
 		session.getTransaction().commit();
+		
 		System.out.println(emp.getEmployeeId() +" " + empNew.getEmployeeId());
 		HibernateUtil.shutdown();
 	}
